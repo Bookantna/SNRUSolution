@@ -1,28 +1,39 @@
 text = input("")
-answer = ''
 # #.A.#.B.*.C.*.D.#
-for i in range(5):
-    for j in range(1,len(text)):
-            if i == 0 or i == 4:
-                answer += '.'
-                answer += '.#.'
-                if len(text) == 1:
-                    answer += '.'
-                print(answer,end = '')
-            elif i == 1 or i == 3:
-                answer += '.'
-                answer += '#.#'
-                if j == len(text)-1:
-                    answer += '.'
-                print(answer,end = '')
-            elif i == 2:
-                answer = f'#.{text[j]}.'
-                if len(text) == 1:
-                    answer += '#'
-                print(answer,end = '')
-
-    print("")
+def main():
     answer = ''
+    for i in range(5):
+        for j in range(len(text)):
+            track = j +1
+            if track % 3 != 0 or j == 0:
+                if i == 0 or i == 4:
+                    answer += '..#.'
+                    if len(text)-1 == j:
+                        answer += '.\n'
+                elif i == 1 or i == 3:
+                    answer += '.#.#' 
+                    if len(text)-1 == j:
+                        answer += '.\n'
+                elif i == 2:
+                    answer += f'#.{text[j]}.'
+                    if len(text)-1 == j:
+                        answer += '#\n'  
+            elif track % 3 == 0:
+                if i == 0 or i == 4:
+                    answer += '..*.'
+                    if len(text)-1 == j:
+                        answer += '.\n'
+                elif i == 1 or i == 3:
+                    answer += '.*.*' 
+                    if len(text)-1 == j:
+                        answer += '.\n'
+                elif i == 2:
+                    answer += f'*.{text[j]}.'
+                    if len(text)-1 == j:
+                        answer += '*\n' 
 
-
+    print(answer,end ='')
+    
+if __name__ == '__main__':
+    main()
 
